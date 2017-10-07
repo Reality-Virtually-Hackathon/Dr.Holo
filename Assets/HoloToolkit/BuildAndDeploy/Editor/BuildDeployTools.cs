@@ -22,51 +22,10 @@ namespace HoloToolkit.Unity
     {
         public static readonly string DefaultMSBuildVersion = "14.0";
 
-        public static bool CanBuild()
-        {
-            if (PlayerSettings.GetScriptingBackend(BuildTargetGroup.WSA) == ScriptingImplementation.IL2CPP && IsIl2CppAvailable())
-            {
-                return true;
-            }
-
-            return PlayerSettings.GetScriptingBackend(BuildTargetGroup.WSA) == ScriptingImplementation.WinRTDotNET && IsDotNetAvailable();
-        }
-
-        public static bool IsDotNetAvailable()
-        {
-            return Directory.Exists(EditorApplication.applicationContentsPath + "\\PlaybackEngines\\MetroSupport\\Managed\\UAP");
-        }
-
-        public static bool IsIl2CppAvailable()
-        {
-            return Directory.Exists(EditorApplication.applicationContentsPath + "\\PlaybackEngines\\MetroSupport\\Managed\\il2cpp");
-        }
-
-        /// <summary>
-        /// Displays a dialog if no scenes are present in the build and returns true if build can proceed.
-        /// </summary>
-        /// <returns></returns>
-        public static bool CheckBuildScenes()
-        {
-            if (EditorBuildSettings.scenes.Length == 0)
-            {
-                return EditorUtility.DisplayDialog("Attention!",
-                    "No scenes are present in the build settings!\n\n Do you want to cancel and add one?",
-                    "Continue Anyway", "Cancel Build");
-            }
-
-            return true;
-        }
-
         public static bool BuildSLN(string buildDirectory, bool showDialog = true)
         {
             // Use BuildSLNUtilities to create the SLN
             bool buildSuccess = false;
-
-            if (CheckBuildScenes() == false)
-            {
-                return false;
-            }
 
             var buildInfo = new BuildInfo
             {
@@ -96,7 +55,6 @@ namespace HoloToolkit.Unity
                                     BuildDeployPrefs.MsBuildVersion,
                                     BuildDeployPrefs.ForceRebuild,
                                     BuildDeployPrefs.BuildConfig,
-                                    BuildDeployPrefs.BuildPlatform,
                                     BuildDeployPrefs.BuildDirectory,
                                     BuildDeployPrefs.IncrementBuildVersion);
                             }
@@ -122,11 +80,13 @@ namespace HoloToolkit.Unity
                     Registry.LocalMachine.OpenSubKey(
                         string.Format(@"Software\Microsoft\MSBuild\ToolsVersions\{0}", msBuildVersion)))
                 {
-                    if (key != null)
+                    if (key == null)
                     {
-                        var msBuildBinFolder = (string)key.GetValue("MSBuildToolsPath");
-                        return Path.Combine(msBuildBinFolder, "msbuild.exe");
+                        return null;
                     }
+
+                    var msBuildBinFolder = (string)key.GetValue("MSBuildToolsPath");
+                    return Path.Combine(msBuildBinFolder, "msbuild.exe");
                 }
             }
 
@@ -161,17 +121,12 @@ namespace HoloToolkit.Unity
 
             string[] paths = output.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (paths.Length > 0)
+            // if there are multiple 2017 installs,
+            // prefer enterprise, then pro, then community
+            string bestPath = paths.OrderBy(p => p.ToLower().Contains("enterprise")).ThenBy(p => p.ToLower().Contains("professional")).First();
+            if (File.Exists(bestPath + @"\MSBuild\" + msBuildVersion + @"\Bin\MSBuild.exe"))
             {
-                // if there are multiple 2017 installs,
-                // prefer enterprise, then pro, then community
-                string bestPath = paths.OrderBy(p => p.ToLower().Contains("enterprise"))
-                                        .ThenBy(p => p.ToLower().Contains("professional"))
-                                        .ThenBy(p => p.ToLower().Contains("community")).First();
-                if (File.Exists(bestPath + @"\MSBuild\" + msBuildVersion + @"\Bin\MSBuild.exe"))
-                {
-                    return bestPath + @"\MSBuild\" + msBuildVersion + @"\Bin\MSBuild.exe";
-                }
+                return bestPath + @"\MSBuild\" + msBuildVersion + @"\Bin\MSBuild.exe";
             }
 
             Debug.LogError("Unable to find a valid path to Visual Studio Instance!");
@@ -200,7 +155,7 @@ namespace HoloToolkit.Unity
             return File.Exists(storePath + "\\project.lock.json");
         }
 
-        public static bool BuildAppxFromSLN(string productName, string msBuildVersion, bool forceRebuildAppx, string buildConfig, string buildPlatform, string buildDirectory, bool incrementVersion, bool showDialog = true)
+        public static bool BuildAppxFromSLN(string productName, string msBuildVersion, bool forceRebuildAppx, string buildConfig, string buildDirectory, bool incrementVersion, bool showDialog = true)
         {
             EditorUtility.DisplayProgressBar("Build AppX", "Building AppX Package...", 0);
             string slnFilename = Path.Combine(buildDirectory, PlayerSettings.productName + ".sln");
@@ -262,11 +217,10 @@ namespace HoloToolkit.Unity
             {
                 FileName = vs,
                 CreateNoWindow = false,
-                Arguments = string.Format("\"{0}\" /t:{1} /p:Configuration={2} /p:Platform={3} /verbosity:m",
+                Arguments = string.Format("\"{0}\" /t:{2} /p:Configuration={1} /p:Platform=x86 /verbosity:m",
                     solutionProjectPath,
-                    forceRebuildAppx ? "Rebuild" : "Build",
                     buildConfig,
-                    buildPlatform)
+                    forceRebuildAppx ? "Rebuild" : "Build")
             };
 
             // Uncomment out to debug by copying into command window

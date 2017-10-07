@@ -18,7 +18,8 @@ namespace HoloToolkit.Unity.InputModule
 
         private void OnEnable()
         {
-            keywordsProperty = serializedObject.FindProperty("Keywords");            
+            keywordsProperty = serializedObject.FindProperty("Keywords");
+            registeredKeywords = RegisteredKeywords().Distinct().ToArray();
             isGlobalListenerProperty = serializedObject.FindProperty("IsGlobalListener");
             persistentKeywordsProperty = serializedObject.FindProperty("PersistentKeywords");
         }
@@ -29,7 +30,6 @@ namespace HoloToolkit.Unity.InputModule
             EditorGUILayout.PropertyField(isGlobalListenerProperty);
             EditorGUILayout.PropertyField(persistentKeywordsProperty);
 
-            registeredKeywords = RegisteredKeywords().Distinct().ToArray();
             ShowList(keywordsProperty);
             serializedObject.ApplyModifiedProperties();
 
@@ -124,9 +124,9 @@ namespace HoloToolkit.Unity.InputModule
         {
             foreach (SpeechInputSource source in FindObjectsOfType<SpeechInputSource>())
             {
-                for (var i = 0; i < source.Keywords.Length; i++)
+                foreach (SpeechInputSource.KeywordAndKeyCode keywordAndKeyCode in source.Keywords)
                 {
-                    yield return source.Keywords[i].Keyword;
+                    yield return keywordAndKeyCode.Keyword;
                 }
             }
         }

@@ -12,9 +12,8 @@ namespace HoloToolkit.Sharing.Utilities
     {
         /// <summary>
         /// The maximum length of characters in a IPv4 address.
-        /// <remarks>000.000.000.000</remarks>
         /// </summary>
-        private const int MaximumCharacterLength = 15;
+        private const int MaximumCharacterLength = 12;
 
         public string IpAddress { get { return ipAddress.text; } }
 

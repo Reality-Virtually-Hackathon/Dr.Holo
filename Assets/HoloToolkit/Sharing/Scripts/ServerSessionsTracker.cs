@@ -5,7 +5,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HoloToolkit.Unity;
+using UnityEngine;
 
 namespace HoloToolkit.Sharing
 {
@@ -50,6 +52,7 @@ namespace HoloToolkit.Sharing
             if (sessionManager != null)
             {
                 sessionManagerAdapter = new SessionManagerAdapter();
+                sessionManager.AddListener(sessionManagerAdapter);
                 sessionManagerAdapter.ServerConnectedEvent += OnServerConnected;
                 sessionManagerAdapter.ServerDisconnectedEvent += OnServerDisconnected;
                 sessionManagerAdapter.SessionClosedEvent += OnSessionClosed;
@@ -59,7 +62,6 @@ namespace HoloToolkit.Sharing
                 sessionManagerAdapter.UserChangedEvent += OnUserChanged;
                 sessionManagerAdapter.UserJoinedSessionEvent += OnUserJoined;
                 sessionManagerAdapter.UserLeftSessionEvent += OnUserLeft;
-                sessionManager.AddListener(sessionManagerAdapter);
             }
         }
 

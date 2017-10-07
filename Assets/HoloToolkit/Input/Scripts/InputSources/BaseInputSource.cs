@@ -11,6 +11,13 @@ namespace HoloToolkit.Unity.InputModule
     /// </summary>
     public abstract class BaseInputSource : MonoBehaviour, IInputSource
     {
+        protected InputManager inputManager;
+  
+        protected virtual void Start()
+        {
+            inputManager = InputManager.Instance;
+        }
+
         public abstract SupportedInputInfo GetSupportedInputInfo(uint sourceId);
 
         public bool SupportsInputInfo(uint sourceId, SupportedInputInfo inputInfo)

@@ -1,6 +1,3 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
-
 // Faster version of the Unity Standard Shader.
 // Forces compilation for shader model 5.0.
 // Sets several defines to make perf/quality trade-offs that are more realistic for less beefy hardware.
@@ -8,7 +5,7 @@
 // Merging should be relatively easy as none of the .cginc files need to be touched.
 // Supports stereo instancing.
 
-Shader "MixedRealityToolkit/Obsolete/StandardFast"
+Shader "HoloToolkit/Obsolete/StandardFast"
 {
     Properties
     {

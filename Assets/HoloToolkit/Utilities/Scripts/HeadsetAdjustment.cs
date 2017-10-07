@@ -21,7 +21,7 @@ namespace HoloToolkit.Unity
             GotoNextScene();
         }
 
-        public void OnSpeechKeywordRecognized(SpeechEventData eventData)
+        public void OnSpeechKeywordRecognized(SpeechKeywordRecognizedEventData eventData)
         {
             GotoNextScene();
         }

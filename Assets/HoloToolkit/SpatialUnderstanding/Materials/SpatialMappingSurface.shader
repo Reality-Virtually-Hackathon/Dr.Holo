@@ -1,10 +1,7 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License. See LICENSE in the project root for license information.
-
 ///
 /// Basic wireframe shader that can be used for rendering spatial mapping meshes.
 ///
-Shader "MixedRealityToolkit/SpatialUnderstanding/Mapping" 
+Shader "HoloToolkit/SpatialUnderstanding/Mapping" 
 {
     Properties
     {

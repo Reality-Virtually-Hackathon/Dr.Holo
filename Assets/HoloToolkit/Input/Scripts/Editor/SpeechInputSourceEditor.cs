@@ -18,7 +18,7 @@ namespace HoloToolkit.Unity.InputModule
         {
             persistentKeywordsProperty = serializedObject.FindProperty("PersistentKeywords");
             recognizerStart = serializedObject.FindProperty("RecognizerStart");
-            confidenceLevel = serializedObject.FindProperty("recognitionConfidenceLevel");
+            confidenceLevel = serializedObject.FindProperty("RecognitionConfidenceLevel");
             keywordsAndKeys = serializedObject.FindProperty("Keywords");
         }
 

@@ -4,7 +4,7 @@
 ///
 /// Simple vertex shader that blends static lighting and camera lighting.
 ///
-Shader "MixedRealityToolkit/Examples/UnlitTransparentTriplanar"
+Shader "HoloToolkit/Examples/UnlitTransparentTriplanar"
 {
 	Properties
 	{
