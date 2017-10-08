@@ -39,7 +39,7 @@ public class GetPatients : MonoBehaviour {
 			treatmentPlan.text = temp.treatmentPlan;
 			MRN.text = temp.MRN.ToString();
 			name.text = temp.firstName + " " + temp.lastName;
-			//	pic = patient_kind.profilePics;
+			pic.sprite = temp.profileSprite;
 		}
 	}
 }

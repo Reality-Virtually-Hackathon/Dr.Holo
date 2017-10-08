@@ -12,9 +12,7 @@ public class PatientInfo {
 	public string medicalHistory;
 	public string treatmentPlan;
 	public string medication;
-	public Image profilePics;
-
-
+	public Sprite profileSprite;
 
 }
 	
