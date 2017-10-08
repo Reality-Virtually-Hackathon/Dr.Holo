@@ -1,0 +1,4 @@
+C:\Users\msftr\OneDrive\Documents\Dr.Holo2\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\msftr\OneDrive\Documents\Dr.Holo2\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+C:\Users\msftr\OneDrive\Documents\Dr.Holo2\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+C:\Users\msftr\OneDrive\Documents\Dr.Holo2\App\Hololens First App\Hololens First App.csproj;x86
