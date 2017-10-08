@@ -52,7 +52,7 @@ public class PatientInfoManager : MonoBehaviour {
         newInfo.MRN = int.Parse(mrnUI.text);
         newInfo.profileSprite = profilePicUI.sprite;
         newInfo.treatmentPlan = treatmentPlanUI.text;
-        newInfo.encodedImg = System.Convert.ToBase64String(profilePicUI.sprite.texture.EncodeToJPG());
+        newInfo.encodedImg = System.Convert.ToBase64String(profilePicUI.sprite.texture.EncodeToPNG());
 
         patientInfos.Add(newInfo);
         Debug.Log("Added patient info:\r\n" + newInfo.ToString());
@@ -104,6 +104,7 @@ public class PatientInfoManager : MonoBehaviour {
         {
             patientInfos.AddRange(newPatientInfos);
         }
+        Debug.Log(patientInfos.Count + " patient infos loaded");
     }
 
     public void DisplayPatientInfo(int index)
