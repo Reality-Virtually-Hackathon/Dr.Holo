@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/test_sam.unity
     guid: bf9152552cb596a439b30f3adb97fa92
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/DRHolo_UI.unity
     guid: a7b1bb27fd1e5d04c991e43574b83859
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Gesture_Testing.unity
     guid: 5755d2de4de51414fa6ff2a682594430
