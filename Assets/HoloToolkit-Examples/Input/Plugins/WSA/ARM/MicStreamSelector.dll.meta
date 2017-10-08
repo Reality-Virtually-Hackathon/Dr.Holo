@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 966a8e000040c2842a0c70180dc5802d
+guid: ba62e784cfa0c0145819cc7dfdcf8faa
 timeCreated: 1468273328
 licenseType: Pro
 PluginImporter:
@@ -86,7 +86,7 @@ PluginImporter:
       second:
         enabled: 1
         settings:
-          CPU: X86
+          CPU: ARM
           DontProcess: False
           PlaceholderPath: 
           SDK: AnySDK
