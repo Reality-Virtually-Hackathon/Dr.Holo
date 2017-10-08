@@ -27,4 +27,4 @@ Ability to monitor patient care inter-hospital and communicate instantly regardi
 1. Got some code from http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html to read from a file.
 2. Used a menu script from https://www.youtube.com/watch?v=2i06nK_Z5kA.
 3. Used Microsoft's mixed reality toolkit https://github.com/Microsoft/MixedRealityToolkit-Unity
-
+4. Used script from Nick Landry (a Microsoft mentor).
