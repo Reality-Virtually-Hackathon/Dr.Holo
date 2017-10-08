@@ -85,13 +85,18 @@ public class PatientInfoManager : MonoBehaviour {
     private void LoadPatientInfo()
     {
         string fileAddress = GetDataFile().FullName;
-        Stream fileStream = new FileStream(fileAddress, FileMode.Open, FileAccess.Read);
-        StreamReader reader = new StreamReader(fileStream);
+        //Stream fileStream = new FileStream(fileAddress, FileMode.Open, FileAccess.Read);
+        //StreamReader reader = new StreamReader(fileStream);
+        StreamReader reader = new StreamReader(fileAddress);
         string dataString = reader.ReadToEnd();
         reader.Dispose();
-        fileStream.Dispose();
-
-        List<PatientInfo> newPatientInfos = JsonUtility.FromJson<PatientInfoSet>(dataString).patientInfos;
+        //fileStream.Dispose();
+        PatientInfoSet pis = JsonUtility.FromJson<PatientInfoSet>(dataString);
+        if(pis == null)
+        {
+            return;
+        }
+        List<PatientInfo> newPatientInfos = pis.patientInfos;
         if(newPatientInfos != null)
         {
             patientInfos.AddRange(newPatientInfos);
@@ -113,5 +118,6 @@ public class PatientInfoManager : MonoBehaviour {
         byte[] imgData = System.Convert.FromBase64String(patientInfos[index].encodedImg);
         //Texture2D tex = new Texture2D(profilePicUI.sprite.texture.w)
         ImageConversion.LoadImage(profilePicUI.sprite.texture, imgData);
+        Debug.Log("Loaded " + patientInfos.Count + " patient infos");
     }
 }
