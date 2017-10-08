@@ -15,6 +15,7 @@ public class DataPersistence : MonoBehaviour {
 		FileStream file = File.Create (Application.persistentDataPath + "/patientInfo.dat");
 
 		info.Serialize (file, patient);
+
 		file.Close ();
 	
 	}
