@@ -13,7 +13,7 @@ public class PatientSamples : MonoBehaviour {
     {
         try
         {
-            string fileAddress = "C:\\Users\\denny\\Desktop\\ReadWriteTest.txt";
+            string fileAddress = Directory.GetCurrentDirectory();
             string line;
             StreamReader theReader = new StreamReader(fileAddress, Encoding.Default);
             using (theReader)
