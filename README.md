@@ -22,3 +22,5 @@ Reduce risk of medical errors, nosocomial infections and malpractice
 Faster and “hands free” interface for immediate access to patient information and treatment plan with capability to add new patient information, or update/order treatment plan/schedule/medications, without having to physically handle or flip through paper charts where information can get lost or misplaced.
 Ability to confirm with the hospital’s secure internal database that the patient and  treatment plan are the correct one
 Ability to monitor patient care inter-hospital and communicate instantly regarding patient care with hospital staff, real time updates
+
+Got some code from http://answers.unity3d.com/questions/279750/loading-data-from-a-txt-file-c.html to read from a file.
