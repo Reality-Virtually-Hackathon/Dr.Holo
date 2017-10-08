@@ -29,7 +29,10 @@ public class Menu : MonoBehaviour {
 
     public void NewPage(int newPage)
     {
-        //f(newPage != currentPageIndex)
+        if(currentPageIndex == 0 && currentPageIndex == newPage)
+        {
+            return;
+        }
         if (newPage == currentPageIndex)
         {
             StartCoroutine("ChangePage", 0);
