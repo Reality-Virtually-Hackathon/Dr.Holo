@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System.IO;
+using System.Text;
 
 public class ReadWriteText : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [MenuItem("Tools/Read file")]
+    static void ReadString()
+    {
+        string path = "C:/Users/denny/Desktop/ReadWriteTest.txt";
+        StreamReader reader = new StreamReader(path);
+        Debug.Log(reader.ReadToEnd());
+        reader.Close();
+    }
 }
