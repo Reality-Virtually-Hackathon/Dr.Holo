@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 
 
+
 public class PatientSamples : MonoBehaviour {
 
 	public void createPatients ()
@@ -15,7 +16,10 @@ public class PatientSamples : MonoBehaviour {
         {
             string fileAddress = Directory.GetCurrentDirectory();
             string line;
-            StreamReader theReader = new StreamReader(fileAddress, Encoding.Default);
+            //  StreamReader theReader = new StreamReader(fileAddress, Encoding.UTF8);
+            Stream fileStream = new FileStream(fileAddress, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            //StreamReader theReader = new StreamReader(fileAddress);
+            StreamReader theReader = new StreamReader(fileStream);
             using (theReader)
             {
                 do
@@ -41,13 +45,16 @@ public class PatientSamples : MonoBehaviour {
                     }
                 }
                 while (line != null);
-                theReader.Close();
+                fileStream.Dispose();
+                //theReader.Close();
                 //return true;
             }
         }
         catch (Exception e)
         {
-           Console.WriteLine("{0}\n", e.Message);
+            //Console.WriteLine("{0}\n", e.Message);
+            Debug.Log(e.Message);
+            Application.Quit();
            //return false;
         }
     }
