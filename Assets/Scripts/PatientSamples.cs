@@ -13,8 +13,10 @@ public class PatientSamples : MonoBehaviour {
 		sam.medicalHistory = "Lactose";
 		sam.medication = "Lactose pills";
 		sam.treatmentPlan = "N/A";
-		//sam.profilePics = (Image)Resources.Load("Sam_Face");
-		GetPatients.patients.Add(sam);
+		Sprite sprite = Resources.Load<Sprite>("Sam_Face") as Sprite;
+		Debug.Log (sprite);
+		sam.profileSprite = sprite;
+		GetPatients.patients.Add(sam);	
 
 		PatientInfo dennys = new PatientInfo();
 		dennys.firstName = "dennys";
@@ -23,7 +25,7 @@ public class PatientSamples : MonoBehaviour {
 		dennys.medicalHistory = "N/A";
 		dennys.medication = "N/A";
 		dennys.treatmentPlan = "Healthy";
-		//dennys.profilePics = (Image)Resources.Load("Sam_Face");
+		//dennys.profilePics = (Texture2D)Resources.Load("Sam_Face");
 		GetPatients.patients.Add(dennys);
 
 		PatientInfo alec = new PatientInfo();

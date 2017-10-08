@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class DataPersistence : MonoBehaviour {
+
 	//Save a patient to file to the harddrive.  
 	public void SavePatient (PatientInfo patient) {
 		//Received help from Unity videos
