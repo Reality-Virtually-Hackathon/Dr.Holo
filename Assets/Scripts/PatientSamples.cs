@@ -13,8 +13,9 @@ public class PatientSamples : MonoBehaviour {
 	public void createPatients ()
     {
         try
-        {
+        {   
             string fileAddress = Directory.GetCurrentDirectory();
+            fileAddress = fileAddress + "//ReadWriteTest.txt";
             string line;
             //  StreamReader theReader = new StreamReader(fileAddress, Encoding.UTF8);
             Stream fileStream = new FileStream(fileAddress, FileMode.OpenOrCreate, FileAccess.ReadWrite);
