@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 966a8e000040c2842a0c70180dc5802d
+guid: a99d5ba76fdfa2b4bb8a84437b116eb0
 timeCreated: 1468273328
 licenseType: Pro
 PluginImporter:
@@ -19,16 +19,16 @@ PluginImporter:
       first:
         Editor: Editor
       second:
-        enabled: 0
+        enabled: 1
         settings:
-          CPU: AnyCPU
+          CPU: x86
           DefaultValueInitialized: true
           OS: AnyOS
     data:
       first:
         Facebook: Win
       second:
-        enabled: 0
+        enabled: 1
         settings:
           CPU: AnyCPU
     data:
@@ -37,12 +37,12 @@ PluginImporter:
       second:
         enabled: 0
         settings:
-          CPU: AnyCPU
+          CPU: None
     data:
       first:
         Standalone: Linux
       second:
-        enabled: 0
+        enabled: 1
         settings:
           CPU: x86
     data:
@@ -51,12 +51,19 @@ PluginImporter:
       second:
         enabled: 0
         settings:
-          CPU: x86_64
+          CPU: None
+    data:
+      first:
+        Standalone: LinuxUniversal
+      second:
+        enabled: 0
+        settings:
+          CPU: x86
     data:
       first:
         Standalone: OSXIntel
       second:
-        enabled: 0
+        enabled: 1
         settings:
           CPU: AnyCPU
     data:
@@ -65,12 +72,19 @@ PluginImporter:
       second:
         enabled: 0
         settings:
-          CPU: AnyCPU
+          CPU: None
+    data:
+      first:
+        Standalone: OSXUniversal
+      second:
+        enabled: 0
+        settings:
+          CPU: x86
     data:
       first:
         Standalone: Win
       second:
-        enabled: 0
+        enabled: 1
         settings:
           CPU: AnyCPU
     data:
@@ -79,14 +93,14 @@ PluginImporter:
       second:
         enabled: 0
         settings:
-          CPU: AnyCPU
+          CPU: None
     data:
       first:
         Windows Store Apps: WindowsStoreApps
       second:
-        enabled: 1
+        enabled: 0
         settings:
-          CPU: X86
+          CPU: AnyCPU
           DontProcess: False
           PlaceholderPath: 
           SDK: AnySDK
